@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Number Formatting</title>
+    </head>
+    <body>
+        <script>
+            function formatNumber(number, decimalPlaces) {
+                // Convert the number to a string to manipulate it
+                const strNumber = number.toString();
+
+                // Find the position of the decimal point, if any
+                const decimalIndex = strNumber.indexOf('.');
+
+                // If there is no decimal point, or if the requested decimal places are 0, just return the original number
+                if (decimalIndex === -1 || decimalPlaces === 0) {
+                    return number;
+                }
+
+                // Extract the integer and decimal parts
+                const integerPart = strNumber.substring(0, decimalIndex);
+                const decimalPart = strNumber.substring(decimalIndex + 1);
+
+                // Truncate the decimal part to the desired number of places
+                const formattedDecimalPart = decimalPart.slice(0, decimalPlaces);
+
+                // Combine the formatted parts and convert back to a number
+                return parseFloat(`${integerPart}.${formattedDecimalPart}`);
+            }
+
+            // Example usage
+            console.log(formatNumber(123.456789, 2)); // Output: 123.46
+            console.log(formatNumber(123, 0)); // Output: 123
+            console.log(formatNumber(0.001234, 4)); // Output: 0.0012
+        </script>
+    </body>
+</html>

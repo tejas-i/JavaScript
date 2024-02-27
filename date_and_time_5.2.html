@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Current Date and Time</title>
+        <style>
+            p {font: 14px normal arial, verdana, helvetica;}
+        </style>
+    </head>
+    <body>
+        The current date and time are:<br/>
+        <div id="today"></div>
+        
+        <script>
+            function getDate() {
+                const now = new Date();
+                const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so add 1
+                const day = String(now.getDate()).padStart(2, '0');
+                const year = now.getFullYear();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+
+                return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`;
+            }
+
+            function getYesterday(date) {
+                const yesterday = new Date(date.getTime() - (1000 * 60 * 60 * 24));
+                return yesterday.toLocaleDateString("en-US", { weekday: "long" });
+            }
+
+            Date.prototype.getYesterday = function() {
+                const yesterday = new Date(this.getTime() - (1000 * 60 * 60 * 24));
+                return yesterday.toLocaleDateString("en-US", { weekday: "long" });
+            };
+
+            const today = new Date();
+            const yesterdayName = today.getYesterday();
+            console.log("Yesterday was", yesterdayName);
+
+            // Example usage:
+            const currentDate = getDate();
+            document.getElementById("today").innerHTML = currentDate; // Output: 02/14/2024 19:22:00 (example, will reflect current time)
+        </script>
+
+        <input type="button" onclick="location.reload()" value="Refresh" />
+    </body>
+</html>

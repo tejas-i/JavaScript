@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instantiate Object</title>
+    </head>
+    <body>
+        <script>
+            // Instantiate an object using the new Object() syntax
+            const myObject = new Object();
+
+            // Add properties with array values
+            myObject.numbers = [1, 2, 3, 4];
+            myObject.colors = ["red", "green", "blue"];
+            myObject.mixedData = ["apple", 5, true];
+
+            // Convert the object to a JSON string using JSON.stringify()
+            const jsonString = JSON.stringify(myObject);
+
+            // Display the JSON string
+            console.log(jsonString);
+        </script>
+    </body>
+</html>

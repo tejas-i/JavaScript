@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON Parse</title>
+    </head>
+    <body>
+        <script>
+            function parseJson(jsonString) {
+                try {
+                    const parsedData = JSON.parse(jsonString);
+                    console.log(parsedData);
+                } catch (error) {
+                    console.error("Invalid JSON:", error);
+                }
+            }
+
+            parseJson('{"days":["Mon","Tue","Wed"]}'); // Output: { days: ["Mon", "Tue", "Wed"] }
+            parseJson('{"invalid":}');                 // Output: Invalid JSON: SyntaxError: Unexpected end of JSON input
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Volume of a Round Chimney</title>
+    </head>
+    <body>
+        <p id="volume"></p>
+        
+        <script>
+            function calculateVolume(radius, height) {
+                var volume = Math.PI * Math.pow(radius, 2) * height;
+
+                return Math.round(volume);
+            }
+
+            let newVolume = calculateVolume(2, 6);
+            document.getElementById("volume").innerHTML = newVolume;
+        </script>
+    </body>
+</html>

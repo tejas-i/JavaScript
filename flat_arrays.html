@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Array Sum Example</title>
+    </head>
+    <body>
+        <script>
+            function sumAll(...arrays) {
+                // Use flat() to combine all arrays into a single array
+                const flatArray = arrays.flat();
+
+                // Use reduce() to sum the elements
+                const sum = flatArray.reduce((accumulator, currentValue) => {
+                    return accumulator + currentValue;
+                }, 0);
+
+                return sum;
+            }
+
+            // Test cases
+            console.log(sumAll([1, 2, 3], [4, 5], [6])); // Output: 21
+            console.log(sumAll([10], [-5], [0])); // Output: 5
+            console.log(sumAll([])); // Output: 0 (empty array)
+        </script>
+    </body>
+</html>

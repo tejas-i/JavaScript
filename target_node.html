@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Node Insertion</title>
+    </head>
+    <body>
+        <div id="target-node">This is the target node.</div>
+        <script>
+            const newNode = document.createElement('p');
+            newNode.textContent = 'This is the new node inserted after.';
+            insertAfter(newNode, document.getElementById('target-node'));
+
+            function insertAfter(newNode, targetNode) {
+                if (!targetNode || !targetNode.parentNode) {
+                    throw new Error('Target node must be a valid element with a parent');
+                }
+
+                // Check if targetNode is a text node and handle it correctly
+                if (targetNode.nodeType === Node.TEXT_NODE) {
+                    newNode.textContent = targetNode.textContent + newNode.textContent;
+                    targetNode.parentNode.replaceChild(newNode, targetNode);
+                    return;
+                }
+
+                // Insert after targetNode if it has a nextSibling
+                if (targetNode.nextSibling) {
+                    targetNode.parentNode.insertBefore(newNode, targetNode.nextSibling);
+                } else {
+                    // If no nextSibling, append to the parent
+                    targetNode.parentNode.appendChild(newNode);
+                }
+            }
+        </script>
+    </body>
+</html>
